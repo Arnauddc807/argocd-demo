@@ -1,12 +1,14 @@
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
   name: juice-shop
 spec:
-  type: NodePort
   selector:
     app: juice-shop
+  type: ClusterIP
+  
   ports:
-  - name: http
+  - name: juice-shop
+    protocol: TCP
     port: 8000
-    targetPort: 3000
+    targetPort: 8000  
