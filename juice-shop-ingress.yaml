@@ -4,6 +4,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: juice-shop-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   rules:
   - host: juice.cloudops-13.ucll.cloud
@@ -16,3 +18,8 @@ spec:
             name: juice-shop
             port:
               number: 8000
+
+  tls:
+    - hosts:
+      - juice.cloudops-13.ucll.cloud
+      secretName: juice-cert
